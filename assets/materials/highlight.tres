@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dlcqnjhtglbyo"]
+
+[ext_resource type="Texture2D" uid="uid://b0tg7oupsmpxh" path="res://assets/models/restaurantbits_texture.png" id="1_h7dc4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fhos0"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.01
+
+[resource]
+resource_name = "restaurant"
+next_pass = SubResource("StandardMaterial3D_fhos0")
+albedo_texture = ExtResource("1_h7dc4")
+roughness = 0.5

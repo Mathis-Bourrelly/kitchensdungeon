@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdwl44xl6rse"]
+
+[ext_resource type="Script" path="res://lib/player.gd" id="1_15ck2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mtlpn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqvnd"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 9
+script = ExtResource("1_15ck2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00389, 0)
+mesh = SubResource("CapsuleMesh_mtlpn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00389, 0)
+shape = SubResource("CapsuleShape3D_bqvnd")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76345, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+fov = 90.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.85178)
+
+[node name="HandTool" type="Marker3D" parent="Head/Camera"]
+transform = Transform3D(0.254889, 7.43593e-09, -0.96697, 0.311062, 0.946846, 0.0819945, 0.915572, -0.321687, 0.241341, 0.759207, -0.186769, -0.654546)
+gizmo_extents = 0.55
+
+[node name="ToolJoint" type="Generic6DOFJoint3D" parent="Head/Camera/HandTool"]
+transform = Transform3D(1, 6.70552e-08, -2.98023e-08, 4.47035e-08, 1, 7.45058e-09, 1.49012e-08, 3.72529e-08, 1, 0, 0, 0)
+node_a = NodePath("../../StaticBody3D")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+
+[node name="Interaction" type="RayCast3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -3, 0)
+collision_mask = 12
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="HandItem" type="Marker3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.85178)
+gizmo_extents = 0.55
+
+[node name="ItemJoint" type="Generic6DOFJoint3D" parent="Head/Camera/HandItem"]
+node_a = NodePath("../../StaticBody3D")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+
+[node name="HandBowl" type="Marker3D" parent="Head/Camera"]
+transform = Transform3D(0.449611, -0.5762, -0.682527, 0.145825, 0.801215, -0.580336, 0.881241, 0.161396, 0.444259, 0.790469, -0.357776, -0.892343)
+gizmo_extents = 0.55
+
+[node name="bowlJoint" type="Generic6DOFJoint3D" parent="Head/Camera/HandBowl"]
+transform = Transform3D(1, 6.70552e-08, -2.98023e-08, 4.47035e-08, 1, 7.45058e-09, 1.49012e-08, 3.72529e-08, 1, 0, 0, 0)
+node_a = NodePath("../../StaticBody3D")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsayn6liywac5"]
+
+[ext_resource type="Script" path="res://lib/item.gd" id="1_jqdly"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xpwu"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_em4g2"]
+material = SubResource("StandardMaterial3D_4xpwu")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ghs8h"]
+
+[node name="Item" type="RigidBody3D" groups=["item"]]
+collision_layer = 4
+collision_mask = 15
+mass = 0.15
+center_of_mass_mode = 1
+script = ExtResource("1_jqdly")
+
+[node name="RawMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_em4g2")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ghs8h")
+
+[node name="SnapPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4993, 0)

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://si5vad81q5b1"]
+
+[ext_resource type="Texture2D" uid="uid://cifrtb4756lcj" path="res://assets/icons/step_carrot.png" id="1_40qm5"]
+[ext_resource type="Script" path="res://lib/icon_menu.gd" id="1_jcb74"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrqcw"]
+transparency = 1
+albedo_texture = ExtResource("1_40qm5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nti63"]
+transparency = 1
+albedo_texture = ExtResource("1_40qm5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qavn"]
+transparency = 1
+albedo_texture = ExtResource("1_40qm5")
+
+[node name="IconMenu" type="Node3D"]
+script = ExtResource("1_jcb74")
+
+[node name="step_1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.21856, 0, 0, 0, 1.21856, 0, 0, 0, 0.99914, -1.01, 0, 0)
+size = Vector3(0.5, 0.5, 0)
+material = SubResource("StandardMaterial3D_xrqcw")
+
+[node name="step_2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.21856, 0, 0, 0, 1.21856, 0, 0, 0, 0.99914, 0, 0, 0)
+size = Vector3(0.5, 0.5, 0)
+material = SubResource("StandardMaterial3D_nti63")
+
+[node name="step_3" type="CSGBox3D" parent="."]
+transform = Transform3D(1.21856, 0, 0, 0, 1.21856, 0, 0, 0, 0.99914, 1.03, 0, 0)
+size = Vector3(0.5, 0.5, 0)
+material = SubResource("StandardMaterial3D_0qavn")

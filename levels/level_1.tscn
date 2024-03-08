@@ -1,0 +1,118 @@
+[gd_scene load_steps=26 format=3 uid="uid://djek0cyer6k1s"]
+
+[ext_resource type="Script" path="res://lib/spawn_point.gd" id="1_0w44t"]
+[ext_resource type="Script" path="res://lib/level.gd" id="1_fmp24"]
+[ext_resource type="Texture2D" uid="uid://dbx0k414e6aac" path="res://assets/textures/texture_01.png" id="3_7qbsx"]
+[ext_resource type="PackedScene" uid="uid://b307awnabx74p" path="res://scenes/instances/crates/crate_carrots.tscn" id="6_cmnq7"]
+[ext_resource type="PackedScene" uid="uid://ciawkoudoul" path="res://scenes/instances/crates/crate_tomatoes.tscn" id="7_7gcee"]
+[ext_resource type="PackedScene" uid="uid://j3p8qd1abgn" path="res://scenes/instances/crates/crate_lettuces.tscn" id="7_uw5cb"]
+[ext_resource type="PackedScene" uid="uid://dtimlxeuluwrt" path="res://scenes/instances/crates/crate_onions.tscn" id="8_73e8e"]
+[ext_resource type="PackedScene" uid="uid://co03rrbhawact" path="res://scenes/furnitures/cutting_board.tscn" id="8_eoix3"]
+[ext_resource type="PackedScene" uid="uid://b6hyni0f173ng" path="res://scenes/instances/crates/crate_potatoes.tscn" id="9_amvqu"]
+[ext_resource type="PackedScene" uid="uid://dhq67qsc21e0v" path="res://scenes/instances/tools/knife.tscn" id="9_hxe3w"]
+[ext_resource type="PackedScene" uid="uid://ccfkn3d2s1wb2" path="res://scenes/furnitures/tool_stand.tscn" id="11_wbyfk"]
+[ext_resource type="PackedScene" uid="uid://cifiii85buts2" path="res://scenes/furnitures/kitchencounter.tscn" id="13_te6bj"]
+[ext_resource type="PackedScene" uid="uid://dsgolic0jqcg8" path="res://scenes/instances/items/cooked/lettuce_chopped.tscn" id="14_be8ui"]
+[ext_resource type="PackedScene" uid="uid://bfduqm2kwstpt" path="res://scenes/instances/items/cooked/carrot_pieces.tscn" id="15_kxnix"]
+[ext_resource type="PackedScene" uid="uid://bt4eme41xqnvu" path="res://scenes/furnitures/wall_orderwindow.tscn" id="15_ved6j"]
+[ext_resource type="PackedScene" uid="uid://dg62cmm85jbkq" path="res://scenes/instances/items/cooked/onion_rings.tscn" id="17_bii35"]
+[ext_resource type="PackedScene" uid="uid://w823gfayxjbe" path="res://scenes/instances/items/cooked/potato_chopped.tscn" id="18_nff4o"]
+[ext_resource type="PackedScene" uid="uid://bjny11unvjygb" path="res://scenes/furnitures/kitchencounter_rack_bowl.tscn" id="19_ecbew"]
+[ext_resource type="PackedScene" uid="uid://co24rvbbfivim" path="res://scenes/instances/items/cooked/tomato_slices.tscn" id="19_nnpe0"]
+[ext_resource type="PackedScene" uid="uid://b4rjy6fgbfn3i" path="res://scenes/furnitures/step_box.tscn" id="20_pa5v3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ka5yo"]
+sky_top_color = Color(0, 0.435294, 0.866667, 1)
+sky_horizon_color = Color(0.546078, 0.651961, 0.755882, 1)
+ground_bottom_color = Color(0.184314, 0.172549, 0.156863, 1)
+ground_horizon_color = Color(0.546078, 0.651961, 0.755882, 1)
+
+[sub_resource type="Sky" id="Sky_n3fpu"]
+sky_material = SubResource("ProceduralSkyMaterial_ka5yo")
+
+[sub_resource type="Environment" id="Environment_ybhw8"]
+background_mode = 2
+sky = SubResource("Sky_n3fpu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_xyxrh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_caid4"]
+albedo_texture = ExtResource("3_7qbsx")
+uv1_scale = Vector3(20, 20, 20)
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_fmp24")
+key = "level_1"
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(-4.37112e-08, 0, -1, 0, 1, 0, 1, 0, -4.37112e-08, 2.06857, 1, 1.18425)
+script = ExtResource("1_0w44t")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ybhw8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866024, 0.433016, -0.250001, 1.47562e-08, 0.499998, 0.866026, 0.500003, -0.749999, 0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 0.5, 0, 0, 0, 50, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_xyxrh")
+material = SubResource("StandardMaterial3D_caid4")
+
+[node name="cutting_board" parent="." instance=ExtResource("8_eoix3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.11444, 0.25, -4.12207)
+
+[node name="knife" parent="." instance=ExtResource("9_hxe3w")]
+transform = Transform3D(0.725843, 0, -0.687861, 0, 1, 0, 0.687861, 0, 0.725843, 8.51242, 1.42027, -4.08732)
+
+[node name="knife2" parent="." instance=ExtResource("9_hxe3w")]
+transform = Transform3D(0.697628, 0, -0.71646, 0, 1, 0, 0.71646, 0, 0.697628, 9.17111, 1.42176, -3.41493)
+
+[node name="crate_carrots" parent="." instance=ExtResource("6_cmnq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, -7)
+
+[node name="crate_lettuces" parent="." instance=ExtResource("7_uw5cb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.244729, -4)
+
+[node name="crate_onions" parent="." instance=ExtResource("8_73e8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.245661, -4)
+
+[node name="crate_potatoes" parent="." instance=ExtResource("9_amvqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.245171, -4)
+
+[node name="crate_tomatoes" parent="." instance=ExtResource("7_7gcee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.245661, -7)
+
+[node name="tool_stand" parent="." instance=ExtResource("11_wbyfk")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 9, 1.52621, -4)
+
+[node name="kitchencounter" parent="." instance=ExtResource("13_te6bj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.02727, 0.25, 0.551243)
+
+[node name="wall_orderwindow" parent="." instance=ExtResource("15_ved6j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.16569, 0.25, 3.30241)
+
+[node name="carrot_pieces" parent="." instance=ExtResource("15_kxnix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85473, 0.386406, 1.3939)
+
+[node name="lettuce_chopped" parent="." instance=ExtResource("14_be8ui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85473, 0.330432, -0.478656)
+
+[node name="onion_rings" parent="." instance=ExtResource("17_bii35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85473, 0.312413, -1.54869)
+
+[node name="potato_chopped" parent="." instance=ExtResource("18_nff4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85473, 0.367486, 0.5245)
+
+[node name="tomato_slices" parent="." instance=ExtResource("19_nnpe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85473, 0.398539, -2.37675)
+
+[node name="kitchencounter_rack_bowl" parent="." instance=ExtResource("19_ecbew")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0.25, 3)
+
+[node name="step_box" parent="." instance=ExtResource("20_pa5v3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.22827, 0.25, -0.623803)

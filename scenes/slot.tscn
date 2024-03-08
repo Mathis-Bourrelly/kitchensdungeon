@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ftd47xdkkkg"]
+
+[ext_resource type="Script" path="res://lib/SnapPoint.gd" id="1_5jl5x"]
+
+[node name="Slot" type="Node3D"]
+script = ExtResource("1_5jl5x")
+
+[node name="SnapPoint" type="Marker3D" parent="."]

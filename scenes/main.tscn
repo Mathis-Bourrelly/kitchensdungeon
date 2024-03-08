@@ -1,0 +1,225 @@
+[gd_scene load_steps=17 format=3 uid="uid://dd82ai2uudsrv"]
+
+[ext_resource type="Script" path="res://lib/main.gd" id="1_jtnbc"]
+[ext_resource type="PackedScene" uid="uid://bdwl44xl6rse" path="res://scenes/player.tscn" id="2_spd3m"]
+[ext_resource type="Texture2D" uid="uid://ctubbiynvs8x7" path="res://assets/ui/Keyboard & Mouse/Default/mouse_left_outline.png" id="3_r0dxh"]
+[ext_resource type="Theme" uid="uid://0f77ghkxcyaf" path="res://theme/theme_kitchen.tres" id="3_r8vp4"]
+[ext_resource type="Texture2D" uid="uid://ckgscdnxogkbm" path="res://assets/ui/Keyboard & Mouse/Default/playstation_trigger_l2_outline.png" id="4_rmbcw"]
+[ext_resource type="Texture2D" uid="uid://cmkmjrtpsxx3k" path="res://assets/ui/crosshair038.png" id="5_a3irm"]
+[ext_resource type="Texture2D" uid="uid://dhmqhiiqm4l6b" path="res://assets/ui/Keyboard & Mouse/Default/keyboard_f_outline.png" id="5_rytmc"]
+[ext_resource type="Texture2D" uid="uid://crp7he5xjw2xr" path="res://assets/ui/Keyboard & Mouse/Default/playstation_trigger_r2_outline.png" id="6_mib1x"]
+[ext_resource type="Texture2D" uid="uid://cnpbml3l8inw1" path="res://assets/icons/pile_coins.png" id="7_c8rm1"]
+[ext_resource type="Texture2D" uid="uid://cpe0igoej78hu" path="res://assets/ui/Keyboard & Mouse/Default/playstation_trigger_r1_outline.png" id="7_olscd"]
+[ext_resource type="Texture2D" uid="uid://s4ida8udjji5" path="res://assets/ui/Keyboard & Mouse/Default/playstation_trigger_l1_outline.png" id="8_y7lc2"]
+[ext_resource type="Texture2D" uid="uid://btsnsec1uijix" path="res://assets/ui/Keyboard & Mouse/Default/playstation_button_triangle_outline.png" id="9_f4v7b"]
+[ext_resource type="Script" path="res://lib/Menu.gd" id="9_kxo40"]
+[ext_resource type="Texture2D" uid="uid://cxypowafnpv32" path="res://assets/ui/Keyboard & Mouse/Default/mouse_right_outline.png" id="10_rucrm"]
+[ext_resource type="Texture2D" uid="uid://o7epunqthj4j" path="res://assets/ui/Keyboard & Mouse/Default/playstation_button_options_outline.png" id="11_eo3y5"]
+[ext_resource type="Texture2D" uid="uid://dsyaavx7oet7q" path="res://assets/ui/Keyboard & Mouse/Default/keyboard_escape_outline.png" id="12_id7vw"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_jtnbc")
+
+[node name="Player" parent="." instance=ExtResource("2_spd3m")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_r8vp4")
+texture = ExtResource("5_a3irm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.0
+offset_bottom = 100.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+theme = ExtResource("3_r8vp4")
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_r8vp4")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer6"]
+layout_mode = 2
+theme = ExtResource("3_r8vp4")
+texture = ExtResource("7_c8rm1")
+
+[node name="CoinCount" type="Label" parent="MarginContainer/HBoxContainer6"]
+layout_direction = 3
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_r8vp4")
+text = "null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="PanelContainer" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_r8vp4")
+script = ExtResource("9_kxo40")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+layout_mode = 2
+theme = ExtResource("3_r8vp4")
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("3_r8vp4")
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_r8vp4")
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_r8vp4")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Restart"
+
+[node name="Exit" type="Button" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_r8vp4")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Exit"
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+
+[node name="Controls" type="VBoxContainer" parent="Menu/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="grab_drop" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/grab_drop"]
+layout_mode = 2
+text = "Grab / Drop"
+
+[node name="separator" type="VSeparator" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/grab_drop"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 155
+
+[node name="TextureRect2" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/grab_drop"]
+layout_mode = 2
+texture = ExtResource("4_rmbcw")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/grab_drop"]
+layout_mode = 2
+texture = ExtResource("3_r0dxh")
+stretch_mode = 2
+
+[node name="throw_action" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/throw_action"]
+layout_mode = 2
+text = "Throw / Action"
+
+[node name="separator" type="VSeparator" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/throw_action"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 115
+
+[node name="TextureRect2" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/throw_action"]
+layout_mode = 2
+texture = ExtResource("6_mib1x")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/throw_action"]
+layout_mode = 2
+texture = ExtResource("10_rucrm")
+
+[node name="swap_hand" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand"]
+layout_mode = 2
+text = "Swap hand"
+
+[node name="separator" type="VSeparator" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand"]
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_f4v7b")
+
+[node name="TextureRect2" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_y7lc2")
+
+[node name="TextureRect" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_olscd")
+
+[node name="TextureRect4" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/swap_hand/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_rytmc")
+
+[node name="pause" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/pause"]
+layout_mode = 2
+text = "Pause"
+
+[node name="separator" type="VSeparator" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/pause"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 215
+
+[node name="TextureRect2" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/pause"]
+layout_mode = 2
+texture = ExtResource("11_eo3y5")
+
+[node name="TextureRect3" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/MarginContainer/Controls/pause"]
+layout_mode = 2
+texture = ExtResource("12_id7vw")
+
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Restart" to="Menu" method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/Exit" to="Menu" method="_on_exit_pressed"]
