@@ -41,6 +41,7 @@ func _on_place_1_body_entered(body):
 		if snapped_item_1 == null:	
 			if body.is_in_group("bowl"):
 				body.slot = $Slot1
+				snapped_item_1 = body
 				if not body.is_taken:
 					$Slot1.snapped_item = body
 					snapped_item_1 = body
@@ -73,7 +74,6 @@ func check_menu(body):
 
 func send_meal():
 	ring_audio.play()
-	
 	if is_meal_valid:
 		snapped_item_1.queue_free()
 		is_meal_valid = false
